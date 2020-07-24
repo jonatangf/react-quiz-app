@@ -3,6 +3,7 @@ import {fetchQuizQuestions} from './API';
 import {QuestionState, Difficulty} from './API';
 import QuestionCard from './components/QuestionCard';
 import {AnswerObject} from './components/QuestionCard';
+import {GlobalStyle, Wrapper} from './App.styles';
 
 const TOTAL_QUESTIONS = 10;
 
@@ -52,7 +53,9 @@ const App = () => {
   }
 
   return(
-    <div className="App">
+    <>
+    <GlobalStyle/>
+    <Wrapper className="App">
       <h1>REACT QUIZ</h1>
       {gameOver || userAnswers.length === TOTAL_QUESTIONS ? 
         (<button className="start" onClick={startTrivia}>Start</button>) : null
@@ -72,7 +75,8 @@ const App = () => {
       {!gameOver && !loading && userAnswers.length === number + 1 && number !== TOTAL_QUESTIONS - 1 ? 
         (<button className="next" onClick={nextQuestion}>Next question</button>) : null
       }      
-    </div>
+    </Wrapper>
+    </>
   )
 }
 
